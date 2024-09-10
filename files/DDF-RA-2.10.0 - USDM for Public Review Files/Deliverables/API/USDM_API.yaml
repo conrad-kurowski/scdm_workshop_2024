@@ -1,0 +1,3803 @@
+openapi: 3.1.0
+info:
+  title: Simple API for DDF
+  description: A simple TransCelerate Digital Data Flow (DDF) Study Definitions Repository
+    API.
+  version: 2.9.0
+paths:
+  /v3/studyDefinitions:
+    post:
+      tags:
+      - Production
+      summary: Create a study
+      description: Create an entire study including all child element with a single
+        post
+      operationId: create_study_v3_studyDefinitions_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wrapper-Input'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                format: uuid
+                title: Response Create Study V3 Studydefinitions Post
+        '400':
+          description: Bad Request
+          status_code: string
+          detail: string
+          message: string
+        '401':
+          description: Unauthorized
+          status_code: string
+          detail: string
+          message: string
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v3/studyDefinitions/{studyId}:
+    put:
+      tags:
+      - Production
+      summary: Update a study
+      description: Update an entire study including all child element with a single
+        put
+      operationId: update_study_v3_studyDefinitions__studyId__put
+      parameters:
+      - name: studyId
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Studyid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wrapper-Input'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                format: uuid
+                title: Response Update Study V3 Studydefinitions  Studyid  Put
+        '400':
+          status_code: string
+          detail: string
+          message: string
+          description: Bad Request
+        '401':
+          status_code: string
+          detail: string
+          message: string
+          description: Unauthorized
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - Production
+      summary: Return a study
+      description: Return an entire study including all child elements
+      operationId: read_full_study_v3_studyDefinitions__studyId__get
+      parameters:
+      - name: studyId
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Studyid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wrapper-Output'
+        '400':
+          status_code: string
+          detail: string
+          message: string
+          description: Bad Request
+        '401':
+          status_code: string
+          detail: string
+          message: string
+          description: Unauthorized
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v3/studyDefinitions/{studyId}/history:
+    get:
+      tags:
+      - Production
+      summary: Returns the study history
+      description: Returns the history for the specified study
+      operationId: read_study_history_v3_studyDefinitions__studyId__history_get
+      parameters:
+      - name: studyId
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Studyid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Wrapper-Output'
+                title: Response Read Study History V3 Studydefinitions  Studyid  History
+                  Get
+        '400':
+          status_code: string
+          detail: string
+          message: string
+          description: Bad Request
+        '401':
+          status_code: string
+          detail: string
+          message: string
+          description: Unauthorized
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v3/studyDesigns:
+    get:
+      tags:
+      - Production
+      summary: Study designs for a study
+      description: Returns all the study designs for a specified study.
+      operationId: search_study_design_v3_studyDesigns_get
+      parameters:
+      - name: studyId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Studyid
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudyDesign-Output'
+                title: Response Search Study Design V3 Studydesigns Get
+        '400':
+          status_code: string
+          detail: string
+          message: string
+          description: Bad Request
+        '401':
+          status_code: string
+          detail: string
+          message: string
+          description: Unauthorized
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    Activity-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        previousId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Previousid
+        nextId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Nextid
+        definedProcedures:
+          items:
+            $ref: '#/components/schemas/Procedure'
+          type: array
+          title: Definedprocedures
+          default: []
+        biomedicalConceptIds:
+          items:
+            type: string
+          type: array
+          title: Biomedicalconceptids
+          default: []
+        bcCategoryIds:
+          items:
+            type: string
+          type: array
+          title: Bccategoryids
+          default: []
+        bcSurrogateIds:
+          items:
+            type: string
+          type: array
+          title: Bcsurrogateids
+          default: []
+        timelineId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Timelineid
+        instanceType:
+          const: Activity
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - instanceType
+      title: Activity
+    Activity-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        previousId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Previousid
+        nextId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Nextid
+        definedProcedures:
+          items:
+            $ref: '#/components/schemas/Procedure'
+          type: array
+          title: Definedprocedures
+          default: []
+        biomedicalConceptIds:
+          items:
+            type: string
+          type: array
+          title: Biomedicalconceptids
+          default: []
+        bcCategoryIds:
+          items:
+            type: string
+          type: array
+          title: Bccategoryids
+          default: []
+        bcSurrogateIds:
+          items:
+            type: string
+          type: array
+          title: Bcsurrogateids
+          default: []
+        timelineId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Timelineid
+        instanceType:
+          const: Activity
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - instanceType
+      title: Activity
+    Address:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        text:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Text
+        line:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Line
+        city:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: City
+        district:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: District
+        state:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: State
+        postalCode:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Postalcode
+        country:
+          anyOf:
+          - $ref: '#/components/schemas/Code'
+          - type: 'null'
+        instanceType:
+          const: Address
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - instanceType
+      title: Address
+    AdministrationDuration-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        quantity:
+          $ref: '#/components/schemas/Quantity'
+        description:
+          type: string
+          title: Description
+        durationWillVary:
+          type: boolean
+          title: Durationwillvary
+        reasonDurationWillVary:
+          type: string
+          title: Reasondurationwillvary
+        instanceType:
+          const: AdministrationDuration
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - quantity
+      - description
+      - durationWillVary
+      - reasonDurationWillVary
+      - instanceType
+      title: AdministrationDuration
+    AdministrationDuration-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        quantity:
+          $ref: '#/components/schemas/Quantity'
+        description:
+          type: string
+          title: Description
+        durationWillVary:
+          type: boolean
+          title: Durationwillvary
+        reasonDurationWillVary:
+          type: string
+          title: Reasondurationwillvary
+        instanceType:
+          const: AdministrationDuration
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - quantity
+      - description
+      - durationWillVary
+      - reasonDurationWillVary
+      - instanceType
+      title: AdministrationDuration
+    AgentAdministration-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        duration:
+          $ref: '#/components/schemas/AdministrationDuration-Input'
+        dose:
+          $ref: '#/components/schemas/Quantity'
+        route:
+          $ref: '#/components/schemas/Code'
+        frequency:
+          $ref: '#/components/schemas/Code'
+        instanceType:
+          const: AgentAdministration
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - duration
+      - dose
+      - route
+      - frequency
+      - instanceType
+      title: AgentAdministration
+    AgentAdministration-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        duration:
+          $ref: '#/components/schemas/AdministrationDuration-Output'
+        dose:
+          $ref: '#/components/schemas/Quantity'
+        route:
+          $ref: '#/components/schemas/Code'
+        frequency:
+          $ref: '#/components/schemas/Code'
+        instanceType:
+          const: AgentAdministration
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - duration
+      - dose
+      - route
+      - frequency
+      - instanceType
+      title: AgentAdministration
+    AliasCode:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        standardCode:
+          $ref: '#/components/schemas/Code'
+        standardCodeAliases:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Standardcodealiases
+          default: []
+        instanceType:
+          const: AliasCode
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - standardCode
+      - instanceType
+      title: AliasCode
+    AnalysisPopulation:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        text:
+          type: string
+          title: Text
+        instanceType:
+          const: AnalysisPopulation
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - text
+      - instanceType
+      title: AnalysisPopulation
+    BiomedicalConcept-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        synonyms:
+          items:
+            type: string
+          type: array
+          title: Synonyms
+          default: []
+        reference:
+          type: string
+          title: Reference
+        properties:
+          items:
+            $ref: '#/components/schemas/BiomedicalConceptProperty-Input'
+          type: array
+          title: Properties
+          default: []
+        code:
+          $ref: '#/components/schemas/AliasCode'
+        instanceType:
+          const: BiomedicalConcept
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - reference
+      - code
+      - instanceType
+      title: BiomedicalConcept
+    BiomedicalConcept-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        synonyms:
+          items:
+            type: string
+          type: array
+          title: Synonyms
+          default: []
+        reference:
+          type: string
+          title: Reference
+        properties:
+          items:
+            $ref: '#/components/schemas/BiomedicalConceptProperty-Output'
+          type: array
+          title: Properties
+          default: []
+        code:
+          $ref: '#/components/schemas/AliasCode'
+        instanceType:
+          const: BiomedicalConcept
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - reference
+      - code
+      - instanceType
+      title: BiomedicalConcept
+    BiomedicalConceptCategory-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        childIds:
+          items:
+            type: string
+          type: array
+          title: Childids
+          default: []
+        memberIds:
+          items:
+            type: string
+          type: array
+          title: Memberids
+          default: []
+        code:
+          anyOf:
+          - $ref: '#/components/schemas/AliasCode'
+          - type: 'null'
+        instanceType:
+          const: BiomedicalConceptCategory
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - instanceType
+      title: BiomedicalConceptCategory
+    BiomedicalConceptCategory-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        childIds:
+          items:
+            type: string
+          type: array
+          title: Childids
+          default: []
+        memberIds:
+          items:
+            type: string
+          type: array
+          title: Memberids
+          default: []
+        code:
+          anyOf:
+          - $ref: '#/components/schemas/AliasCode'
+          - type: 'null'
+        instanceType:
+          const: BiomedicalConceptCategory
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - instanceType
+      title: BiomedicalConceptCategory
+    BiomedicalConceptProperty-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        isRequired:
+          type: boolean
+          title: Isrequired
+        isEnabled:
+          type: boolean
+          title: Isenabled
+        datatype:
+          type: string
+          title: Datatype
+        responseCodes:
+          items:
+            $ref: '#/components/schemas/ResponseCode'
+          type: array
+          title: Responsecodes
+          default: []
+        code:
+          $ref: '#/components/schemas/AliasCode'
+        instanceType:
+          const: BiomedicalConceptProperty
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - isRequired
+      - isEnabled
+      - datatype
+      - code
+      - instanceType
+      title: BiomedicalConceptProperty
+    BiomedicalConceptProperty-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        isRequired:
+          type: boolean
+          title: Isrequired
+        isEnabled:
+          type: boolean
+          title: Isenabled
+        datatype:
+          type: string
+          title: Datatype
+        responseCodes:
+          items:
+            $ref: '#/components/schemas/ResponseCode'
+          type: array
+          title: Responsecodes
+          default: []
+        code:
+          $ref: '#/components/schemas/AliasCode'
+        instanceType:
+          const: BiomedicalConceptProperty
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - isRequired
+      - isEnabled
+      - datatype
+      - code
+      - instanceType
+      title: BiomedicalConceptProperty
+    BiomedicalConceptSurrogate:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        reference:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Reference
+        instanceType:
+          const: BiomedicalConceptSurrogate
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - instanceType
+      title: BiomedicalConceptSurrogate
+    Characteristic:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        text:
+          type: string
+          title: Text
+        dictionaryId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Dictionaryid
+        instanceType:
+          const: Characteristic
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - text
+      - instanceType
+      title: Characteristic
+    Code:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        code:
+          type: string
+          title: Code
+        codeSystem:
+          type: string
+          title: Codesystem
+        codeSystemVersion:
+          type: string
+          title: Codesystemversion
+        decode:
+          type: string
+          title: Decode
+        instanceType:
+          const: Code
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - code
+      - codeSystem
+      - codeSystemVersion
+      - decode
+      - instanceType
+      title: Code
+    Condition:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        text:
+          type: string
+          title: Text
+        dictionaryId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Dictionaryid
+        contextIds:
+          items:
+            type: string
+          type: array
+          title: Contextids
+          default: []
+        appliesToIds:
+          items:
+            type: string
+          type: array
+          title: Appliestoids
+          default: []
+        instanceType:
+          const: Condition
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - text
+      - instanceType
+      title: Condition
+    EligibilityCriterion:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        text:
+          type: string
+          title: Text
+        dictionaryId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Dictionaryid
+        instanceType:
+          const: EligibilityCriterion
+          title: Instancetype
+        category:
+          $ref: '#/components/schemas/Code'
+        identifier:
+          type: string
+          title: Identifier
+        nextId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Nextid
+        previousId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Previousid
+        contextId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Contextid
+      type: object
+      required:
+      - id
+      - name
+      - text
+      - instanceType
+      - category
+      - identifier
+      title: EligibilityCriterion
+    Encounter:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        type:
+          $ref: '#/components/schemas/Code'
+        previousId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Previousid
+        nextId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Nextid
+        scheduledAtId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Scheduledatid
+        environmentalSetting:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Environmentalsetting
+        contactModes:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Contactmodes
+          default: []
+        transitionStartRule:
+          anyOf:
+          - $ref: '#/components/schemas/TransitionRule'
+          - type: 'null'
+        transitionEndRule:
+          anyOf:
+          - $ref: '#/components/schemas/TransitionRule'
+          - type: 'null'
+        instanceType:
+          const: Encounter
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - type
+      - instanceType
+      title: Encounter
+    Endpoint:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        text:
+          type: string
+          title: Text
+        dictionaryId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Dictionaryid
+        instanceType:
+          const: Endpoint
+          title: Instancetype
+        purpose:
+          type: string
+          title: Purpose
+        level:
+          $ref: '#/components/schemas/Code'
+      type: object
+      required:
+      - id
+      - name
+      - text
+      - instanceType
+      - purpose
+      - level
+      title: Endpoint
+    Estimand:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        summaryMeasure:
+          type: string
+          title: Summarymeasure
+        analysisPopulation:
+          $ref: '#/components/schemas/AnalysisPopulation'
+        interventionId:
+          type: string
+          title: Interventionid
+        variableOfInterestId:
+          type: string
+          title: Variableofinterestid
+        intercurrentEvents:
+          items:
+            $ref: '#/components/schemas/IntercurrentEvent'
+          type: array
+          title: Intercurrentevents
+        instanceType:
+          const: Estimand
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - summaryMeasure
+      - analysisPopulation
+      - interventionId
+      - variableOfInterestId
+      - intercurrentEvents
+      - instanceType
+      title: Estimand
+    GeographicScope-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        type:
+          $ref: '#/components/schemas/Code'
+        code:
+          anyOf:
+          - $ref: '#/components/schemas/AliasCode'
+          - type: 'null'
+        instanceType:
+          const: GeographicScope
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - type
+      - instanceType
+      title: GeographicScope
+    GeographicScope-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        type:
+          $ref: '#/components/schemas/Code'
+        code:
+          anyOf:
+          - $ref: '#/components/schemas/AliasCode'
+          - type: 'null'
+        instanceType:
+          const: GeographicScope
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - type
+      - instanceType
+      title: GeographicScope
+    GovernanceDate-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        type:
+          $ref: '#/components/schemas/Code'
+        dateValue:
+          type: string
+          format: date
+          title: Datevalue
+        geographicScopes:
+          items:
+            $ref: '#/components/schemas/GeographicScope-Input'
+          type: array
+          title: Geographicscopes
+        instanceType:
+          const: GovernanceDate
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - type
+      - dateValue
+      - geographicScopes
+      - instanceType
+      title: GovernanceDate
+    GovernanceDate-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        type:
+          $ref: '#/components/schemas/Code'
+        dateValue:
+          type: string
+          format: date
+          title: Datevalue
+        geographicScopes:
+          items:
+            $ref: '#/components/schemas/GeographicScope-Output'
+          type: array
+          title: Geographicscopes
+        instanceType:
+          const: GovernanceDate
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - type
+      - dateValue
+      - geographicScopes
+      - instanceType
+      title: GovernanceDate
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Indication:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        codes:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Codes
+          default: []
+        isRareDisease:
+          type: boolean
+          title: Israredisease
+        instanceType:
+          const: Indication
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - isRareDisease
+      - instanceType
+      title: Indication
+    IntercurrentEvent:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        strategy:
+          type: string
+          title: Strategy
+        instanceType:
+          const: IntercurrentEvent
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - strategy
+      - instanceType
+      title: IntercurrentEvent
+    Masking:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        role:
+          $ref: '#/components/schemas/Code'
+        instanceType:
+          const: Masking
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - role
+      - instanceType
+      title: Masking
+    NarrativeContent:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        sectionNumber:
+          type: string
+          title: Sectionnumber
+        sectionTitle:
+          type: string
+          title: Sectiontitle
+        text:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Text
+        childIds:
+          items:
+            type: string
+          type: array
+          title: Childids
+          default: []
+        instanceType:
+          const: NarrativeContent
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - sectionNumber
+      - sectionTitle
+      - instanceType
+      title: NarrativeContent
+    Objective-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        text:
+          type: string
+          title: Text
+        dictionaryId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Dictionaryid
+        instanceType:
+          const: Objective
+          title: Instancetype
+        level:
+          anyOf:
+          - $ref: '#/components/schemas/Code'
+          - type: 'null'
+        endpoints:
+          items:
+            $ref: '#/components/schemas/Endpoint'
+          type: array
+          title: Endpoints
+          default: []
+      type: object
+      required:
+      - id
+      - name
+      - text
+      - instanceType
+      title: Objective
+    Objective-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        text:
+          type: string
+          title: Text
+        dictionaryId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Dictionaryid
+        instanceType:
+          const: Objective
+          title: Instancetype
+        level:
+          anyOf:
+          - $ref: '#/components/schemas/Code'
+          - type: 'null'
+        endpoints:
+          items:
+            $ref: '#/components/schemas/Endpoint'
+          type: array
+          title: Endpoints
+          default: []
+      type: object
+      required:
+      - id
+      - name
+      - text
+      - instanceType
+      title: Objective
+    Organization-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        organizationType:
+          $ref: '#/components/schemas/Code'
+        identifierScheme:
+          type: string
+          title: Identifierscheme
+        identifier:
+          type: string
+          title: Identifier
+        legalAddress:
+          anyOf:
+          - $ref: '#/components/schemas/Address'
+          - type: 'null'
+        instanceType:
+          const: Organization
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - organizationType
+      - identifierScheme
+      - identifier
+      - instanceType
+      title: Organization
+    Organization-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        organizationType:
+          $ref: '#/components/schemas/Code'
+        identifierScheme:
+          type: string
+          title: Identifierscheme
+        identifier:
+          type: string
+          title: Identifier
+        legalAddress:
+          anyOf:
+          - $ref: '#/components/schemas/Address'
+          - type: 'null'
+        instanceType:
+          const: Organization
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - organizationType
+      - identifierScheme
+      - identifier
+      - instanceType
+      title: Organization
+    Procedure:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        procedureType:
+          type: string
+          title: Proceduretype
+        code:
+          $ref: '#/components/schemas/Code'
+        studyInterventionId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Studyinterventionid
+        instanceType:
+          const: Procedure
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - procedureType
+      - code
+      - instanceType
+      title: Procedure
+    Quantity:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        value:
+          type: number
+          title: Value
+        unit:
+          anyOf:
+          - $ref: '#/components/schemas/Code'
+          - type: 'null'
+        instanceType:
+          const: Quantity
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - value
+      - instanceType
+      title: Quantity
+    Range:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        minValue:
+          type: number
+          title: Minvalue
+        maxValue:
+          type: number
+          title: Maxvalue
+        unit:
+          anyOf:
+          - $ref: '#/components/schemas/Code'
+          - type: 'null'
+        isApproximate:
+          type: boolean
+          title: Isapproximate
+        instanceType:
+          const: Range
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - minValue
+      - maxValue
+      - isApproximate
+      - instanceType
+      title: Range
+    ResearchOrganization-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        organizationType:
+          $ref: '#/components/schemas/Code'
+        identifierScheme:
+          type: string
+          title: Identifierscheme
+        identifier:
+          type: string
+          title: Identifier
+        legalAddress:
+          anyOf:
+          - $ref: '#/components/schemas/Address'
+          - type: 'null'
+        instanceType:
+          const: ResearchOrganization
+          title: Instancetype
+        manages:
+          items:
+            $ref: '#/components/schemas/StudySite-Input'
+          type: array
+          title: Manages
+      type: object
+      required:
+      - id
+      - name
+      - organizationType
+      - identifierScheme
+      - identifier
+      - instanceType
+      - manages
+      title: ResearchOrganization
+    ResearchOrganization-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        organizationType:
+          $ref: '#/components/schemas/Code'
+        identifierScheme:
+          type: string
+          title: Identifierscheme
+        identifier:
+          type: string
+          title: Identifier
+        legalAddress:
+          anyOf:
+          - $ref: '#/components/schemas/Address'
+          - type: 'null'
+        instanceType:
+          const: ResearchOrganization
+          title: Instancetype
+        manages:
+          items:
+            $ref: '#/components/schemas/StudySite-Output'
+          type: array
+          title: Manages
+      type: object
+      required:
+      - id
+      - name
+      - organizationType
+      - identifierScheme
+      - identifier
+      - instanceType
+      - manages
+      title: ResearchOrganization
+    ResponseCode:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        isEnabled:
+          type: boolean
+          title: Isenabled
+        code:
+          $ref: '#/components/schemas/Code'
+        instanceType:
+          const: ResponseCode
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - isEnabled
+      - code
+      - instanceType
+      title: ResponseCode
+    ScheduleTimeline-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        mainTimeline:
+          type: boolean
+          title: Maintimeline
+        entryCondition:
+          type: string
+          title: Entrycondition
+        entryId:
+          type: string
+          title: Entryid
+        exits:
+          items:
+            $ref: '#/components/schemas/ScheduleTimelineExit'
+          type: array
+          title: Exits
+          default: []
+        timings:
+          items:
+            $ref: '#/components/schemas/Timing'
+          type: array
+          title: Timings
+          default: []
+        instances:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/ScheduledActivityInstance'
+            - $ref: '#/components/schemas/ScheduledDecisionInstance'
+          type: array
+          title: Instances
+          default: []
+        instanceType:
+          const: ScheduleTimeline
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - mainTimeline
+      - entryCondition
+      - entryId
+      - instanceType
+      title: ScheduleTimeline
+    ScheduleTimeline-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        mainTimeline:
+          type: boolean
+          title: Maintimeline
+        entryCondition:
+          type: string
+          title: Entrycondition
+        entryId:
+          type: string
+          title: Entryid
+        exits:
+          items:
+            $ref: '#/components/schemas/ScheduleTimelineExit'
+          type: array
+          title: Exits
+          default: []
+        timings:
+          items:
+            $ref: '#/components/schemas/Timing'
+          type: array
+          title: Timings
+          default: []
+        instances:
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/ScheduledActivityInstance'
+            - $ref: '#/components/schemas/ScheduledDecisionInstance'
+          type: array
+          title: Instances
+          default: []
+        instanceType:
+          const: ScheduleTimeline
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - mainTimeline
+      - entryCondition
+      - entryId
+      - instanceType
+      title: ScheduleTimeline
+    ScheduleTimelineExit:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        instanceType:
+          const: ScheduleTimelineExit
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - instanceType
+      title: ScheduleTimelineExit
+    ScheduledActivityInstance:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        timelineId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Timelineid
+        timelineExitId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Timelineexitid
+        defaultConditionId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Defaultconditionid
+        epochId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Epochid
+        instanceType:
+          const: ScheduledActivityInstance
+          title: Instancetype
+        activityIds:
+          items:
+            type: string
+          type: array
+          title: Activityids
+          default: []
+        encounterId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Encounterid
+      type: object
+      required:
+      - id
+      - instanceType
+      title: ScheduledActivityInstance
+    ScheduledDecisionInstance:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        timelineId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Timelineid
+        timelineExitId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Timelineexitid
+        defaultConditionId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Defaultconditionid
+        epochId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Epochid
+        instanceType:
+          const: ScheduledDecisionInstance
+          title: Instancetype
+        conditionAssignments:
+          additionalProperties:
+            type: string
+          type: object
+          title: Conditionassignments
+      type: object
+      required:
+      - id
+      - instanceType
+      - conditionAssignments
+      title: ScheduledDecisionInstance
+    Study-Input:
+      properties:
+        id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        versions:
+          items:
+            $ref: '#/components/schemas/StudyVersion-Input'
+          type: array
+          title: Versions
+          default: []
+        documentedBy:
+          anyOf:
+          - $ref: '#/components/schemas/StudyProtocolDocument-Input'
+          - type: 'null'
+        instanceType:
+          const: Study
+          title: Instancetype
+      type: object
+      required:
+      - name
+      - instanceType
+      title: Study
+    Study-Output:
+      properties:
+        id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        versions:
+          items:
+            $ref: '#/components/schemas/StudyVersion-Output'
+          type: array
+          title: Versions
+          default: []
+        documentedBy:
+          anyOf:
+          - $ref: '#/components/schemas/StudyProtocolDocument-Output'
+          - type: 'null'
+        instanceType:
+          const: Study
+          title: Instancetype
+      type: object
+      required:
+      - name
+      - instanceType
+      title: Study
+    StudyAmendment-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        number:
+          type: string
+          title: Number
+        summary:
+          type: string
+          title: Summary
+        substantialImpact:
+          type: boolean
+          title: Substantialimpact
+        primaryReason:
+          $ref: '#/components/schemas/StudyAmendmentReason'
+        secondaryReasons:
+          items:
+            $ref: '#/components/schemas/StudyAmendmentReason'
+          type: array
+          title: Secondaryreasons
+          default: []
+        enrollments:
+          items:
+            $ref: '#/components/schemas/SubjectEnrollment-Input'
+          type: array
+          title: Enrollments
+        previousId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Previousid
+        instanceType:
+          const: StudyAmendment
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - number
+      - summary
+      - substantialImpact
+      - primaryReason
+      - enrollments
+      - instanceType
+      title: StudyAmendment
+    StudyAmendment-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        number:
+          type: string
+          title: Number
+        summary:
+          type: string
+          title: Summary
+        substantialImpact:
+          type: boolean
+          title: Substantialimpact
+        primaryReason:
+          $ref: '#/components/schemas/StudyAmendmentReason'
+        secondaryReasons:
+          items:
+            $ref: '#/components/schemas/StudyAmendmentReason'
+          type: array
+          title: Secondaryreasons
+          default: []
+        enrollments:
+          items:
+            $ref: '#/components/schemas/SubjectEnrollment-Output'
+          type: array
+          title: Enrollments
+        previousId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Previousid
+        instanceType:
+          const: StudyAmendment
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - number
+      - summary
+      - substantialImpact
+      - primaryReason
+      - enrollments
+      - instanceType
+      title: StudyAmendment
+    StudyAmendmentReason:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        code:
+          $ref: '#/components/schemas/Code'
+        otherReason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Otherreason
+        instanceType:
+          const: StudyAmendmentReason
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - code
+      - instanceType
+      title: StudyAmendmentReason
+    StudyArm:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        type:
+          $ref: '#/components/schemas/Code'
+        dataOriginDescription:
+          type: string
+          title: Dataorigindescription
+        dataOriginType:
+          $ref: '#/components/schemas/Code'
+        populationIds:
+          items:
+            type: string
+          type: array
+          title: Populationids
+          default: []
+        instanceType:
+          const: StudyArm
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - type
+      - dataOriginDescription
+      - dataOriginType
+      - instanceType
+      title: StudyArm
+    StudyCell:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        armId:
+          type: string
+          title: Armid
+        epochId:
+          type: string
+          title: Epochid
+        elementIds:
+          items:
+            type: string
+          type: array
+          title: Elementids
+          default: []
+        instanceType:
+          const: StudyCell
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - armId
+      - epochId
+      - instanceType
+      title: StudyCell
+    StudyCohort-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        includesHealthySubjects:
+          type: boolean
+          title: Includeshealthysubjects
+        plannedEnrollmentNumber:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        plannedCompletionNumber:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        plannedSex:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Plannedsex
+        criteria:
+          items:
+            $ref: '#/components/schemas/EligibilityCriterion'
+          type: array
+          title: Criteria
+        plannedAge:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        instanceType:
+          const: StudyCohort
+          title: Instancetype
+        characteristics:
+          items:
+            $ref: '#/components/schemas/Characteristic'
+          type: array
+          title: Characteristics
+          default: []
+      type: object
+      required:
+      - id
+      - name
+      - includesHealthySubjects
+      - plannedSex
+      - criteria
+      - instanceType
+      title: StudyCohort
+    StudyCohort-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        includesHealthySubjects:
+          type: boolean
+          title: Includeshealthysubjects
+        plannedEnrollmentNumber:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        plannedCompletionNumber:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        plannedSex:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Plannedsex
+        criteria:
+          items:
+            $ref: '#/components/schemas/EligibilityCriterion'
+          type: array
+          title: Criteria
+        plannedAge:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        instanceType:
+          const: StudyCohort
+          title: Instancetype
+        characteristics:
+          items:
+            $ref: '#/components/schemas/Characteristic'
+          type: array
+          title: Characteristics
+          default: []
+      type: object
+      required:
+      - id
+      - name
+      - includesHealthySubjects
+      - plannedSex
+      - criteria
+      - instanceType
+      title: StudyCohort
+    StudyDesign-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        trialIntentTypes:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Trialintenttypes
+          default: []
+        trialTypes:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Trialtypes
+          default: []
+        therapeuticAreas:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Therapeuticareas
+          default: []
+        characteristics:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Characteristics
+          default: []
+        interventionModel:
+          $ref: '#/components/schemas/Code'
+        encounters:
+          items:
+            $ref: '#/components/schemas/Encounter'
+          type: array
+          title: Encounters
+          default: []
+        activities:
+          items:
+            $ref: '#/components/schemas/Activity-Input'
+          type: array
+          title: Activities
+          default: []
+        biomedicalConcepts:
+          items:
+            $ref: '#/components/schemas/BiomedicalConcept-Input'
+          type: array
+          title: Biomedicalconcepts
+          default: []
+        bcCategories:
+          items:
+            $ref: '#/components/schemas/BiomedicalConceptCategory-Input'
+          type: array
+          title: Bccategories
+          default: []
+        bcSurrogates:
+          items:
+            $ref: '#/components/schemas/BiomedicalConceptSurrogate'
+          type: array
+          title: Bcsurrogates
+          default: []
+        arms:
+          items:
+            $ref: '#/components/schemas/StudyArm'
+          type: array
+          title: Arms
+        studyCells:
+          items:
+            $ref: '#/components/schemas/StudyCell'
+          type: array
+          title: Studycells
+        blindingSchema:
+          anyOf:
+          - $ref: '#/components/schemas/AliasCode'
+          - type: 'null'
+        rationale:
+          type: string
+          title: Rationale
+        epochs:
+          items:
+            $ref: '#/components/schemas/StudyEpoch'
+          type: array
+          title: Epochs
+        elements:
+          items:
+            $ref: '#/components/schemas/StudyElement'
+          type: array
+          title: Elements
+          default: []
+        estimands:
+          items:
+            $ref: '#/components/schemas/Estimand'
+          type: array
+          title: Estimands
+          default: []
+        indications:
+          items:
+            $ref: '#/components/schemas/Indication'
+          type: array
+          title: Indications
+          default: []
+        maskingRoles:
+          items:
+            $ref: '#/components/schemas/Masking'
+          type: array
+          title: Maskingroles
+          default: []
+        studyInterventions:
+          items:
+            $ref: '#/components/schemas/StudyIntervention-Input'
+          type: array
+          title: Studyinterventions
+          default: []
+        objectives:
+          items:
+            $ref: '#/components/schemas/Objective-Input'
+          type: array
+          title: Objectives
+          default: []
+        population:
+          anyOf:
+          - $ref: '#/components/schemas/StudyDesignPopulation-Input'
+          - type: 'null'
+        scheduleTimelines:
+          items:
+            $ref: '#/components/schemas/ScheduleTimeline-Input'
+          type: array
+          title: Scheduletimelines
+          default: []
+        documentVersionId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentversionid
+        dictionaries:
+          items:
+            $ref: '#/components/schemas/SyntaxTemplateDictionary'
+          type: array
+          title: Dictionaries
+          default: []
+        conditions:
+          items:
+            $ref: '#/components/schemas/Condition'
+          type: array
+          title: Conditions
+          default: []
+        organizations:
+          items:
+            $ref: '#/components/schemas/ResearchOrganization-Input'
+          type: array
+          title: Organizations
+          default: []
+        instanceType:
+          const: StudyDesign
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - interventionModel
+      - arms
+      - studyCells
+      - rationale
+      - epochs
+      - instanceType
+      title: StudyDesign
+    StudyDesign-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        trialIntentTypes:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Trialintenttypes
+          default: []
+        trialTypes:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Trialtypes
+          default: []
+        therapeuticAreas:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Therapeuticareas
+          default: []
+        characteristics:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Characteristics
+          default: []
+        interventionModel:
+          $ref: '#/components/schemas/Code'
+        encounters:
+          items:
+            $ref: '#/components/schemas/Encounter'
+          type: array
+          title: Encounters
+          default: []
+        activities:
+          items:
+            $ref: '#/components/schemas/Activity-Output'
+          type: array
+          title: Activities
+          default: []
+        biomedicalConcepts:
+          items:
+            $ref: '#/components/schemas/BiomedicalConcept-Output'
+          type: array
+          title: Biomedicalconcepts
+          default: []
+        bcCategories:
+          items:
+            $ref: '#/components/schemas/BiomedicalConceptCategory-Output'
+          type: array
+          title: Bccategories
+          default: []
+        bcSurrogates:
+          items:
+            $ref: '#/components/schemas/BiomedicalConceptSurrogate'
+          type: array
+          title: Bcsurrogates
+          default: []
+        arms:
+          items:
+            $ref: '#/components/schemas/StudyArm'
+          type: array
+          title: Arms
+        studyCells:
+          items:
+            $ref: '#/components/schemas/StudyCell'
+          type: array
+          title: Studycells
+        blindingSchema:
+          anyOf:
+          - $ref: '#/components/schemas/AliasCode'
+          - type: 'null'
+        rationale:
+          type: string
+          title: Rationale
+        epochs:
+          items:
+            $ref: '#/components/schemas/StudyEpoch'
+          type: array
+          title: Epochs
+        elements:
+          items:
+            $ref: '#/components/schemas/StudyElement'
+          type: array
+          title: Elements
+          default: []
+        estimands:
+          items:
+            $ref: '#/components/schemas/Estimand'
+          type: array
+          title: Estimands
+          default: []
+        indications:
+          items:
+            $ref: '#/components/schemas/Indication'
+          type: array
+          title: Indications
+          default: []
+        maskingRoles:
+          items:
+            $ref: '#/components/schemas/Masking'
+          type: array
+          title: Maskingroles
+          default: []
+        studyInterventions:
+          items:
+            $ref: '#/components/schemas/StudyIntervention-Output'
+          type: array
+          title: Studyinterventions
+          default: []
+        objectives:
+          items:
+            $ref: '#/components/schemas/Objective-Output'
+          type: array
+          title: Objectives
+          default: []
+        population:
+          anyOf:
+          - $ref: '#/components/schemas/StudyDesignPopulation-Output'
+          - type: 'null'
+        scheduleTimelines:
+          items:
+            $ref: '#/components/schemas/ScheduleTimeline-Output'
+          type: array
+          title: Scheduletimelines
+          default: []
+        documentVersionId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentversionid
+        dictionaries:
+          items:
+            $ref: '#/components/schemas/SyntaxTemplateDictionary'
+          type: array
+          title: Dictionaries
+          default: []
+        conditions:
+          items:
+            $ref: '#/components/schemas/Condition'
+          type: array
+          title: Conditions
+          default: []
+        organizations:
+          items:
+            $ref: '#/components/schemas/ResearchOrganization-Output'
+          type: array
+          title: Organizations
+          default: []
+        instanceType:
+          const: StudyDesign
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - interventionModel
+      - arms
+      - studyCells
+      - rationale
+      - epochs
+      - instanceType
+      title: StudyDesign
+    StudyDesignPopulation-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        includesHealthySubjects:
+          type: boolean
+          title: Includeshealthysubjects
+        plannedEnrollmentNumber:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        plannedCompletionNumber:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        plannedSex:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Plannedsex
+        criteria:
+          items:
+            $ref: '#/components/schemas/EligibilityCriterion'
+          type: array
+          title: Criteria
+        plannedAge:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        instanceType:
+          const: StudyDesignPopulation
+          title: Instancetype
+        cohorts:
+          items:
+            $ref: '#/components/schemas/StudyCohort-Input'
+          type: array
+          title: Cohorts
+          default: []
+      type: object
+      required:
+      - id
+      - name
+      - includesHealthySubjects
+      - plannedSex
+      - criteria
+      - instanceType
+      title: StudyDesignPopulation
+    StudyDesignPopulation-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        includesHealthySubjects:
+          type: boolean
+          title: Includeshealthysubjects
+        plannedEnrollmentNumber:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        plannedCompletionNumber:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        plannedSex:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Plannedsex
+        criteria:
+          items:
+            $ref: '#/components/schemas/EligibilityCriterion'
+          type: array
+          title: Criteria
+        plannedAge:
+          anyOf:
+          - $ref: '#/components/schemas/Range'
+          - type: 'null'
+        instanceType:
+          const: StudyDesignPopulation
+          title: Instancetype
+        cohorts:
+          items:
+            $ref: '#/components/schemas/StudyCohort-Output'
+          type: array
+          title: Cohorts
+          default: []
+      type: object
+      required:
+      - id
+      - name
+      - includesHealthySubjects
+      - plannedSex
+      - criteria
+      - instanceType
+      title: StudyDesignPopulation
+    StudyElement:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        transitionStartRule:
+          anyOf:
+          - $ref: '#/components/schemas/TransitionRule'
+          - type: 'null'
+        transitionEndRule:
+          anyOf:
+          - $ref: '#/components/schemas/TransitionRule'
+          - type: 'null'
+        studyInterventionIds:
+          items:
+            type: string
+          type: array
+          title: Studyinterventionids
+          default: []
+        instanceType:
+          const: StudyElement
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - instanceType
+      title: StudyElement
+    StudyEpoch:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        type:
+          $ref: '#/components/schemas/Code'
+        previousId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Previousid
+        nextId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Nextid
+        instanceType:
+          const: StudyEpoch
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - type
+      - instanceType
+      title: StudyEpoch
+    StudyIdentifier-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        studyIdentifier:
+          type: string
+          title: Studyidentifier
+        studyIdentifierScope:
+          $ref: '#/components/schemas/Organization-Input'
+        instanceType:
+          const: StudyIdentifier
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - studyIdentifier
+      - studyIdentifierScope
+      - instanceType
+      title: StudyIdentifier
+    StudyIdentifier-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        studyIdentifier:
+          type: string
+          title: Studyidentifier
+        studyIdentifierScope:
+          $ref: '#/components/schemas/Organization-Output'
+        instanceType:
+          const: StudyIdentifier
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - studyIdentifier
+      - studyIdentifierScope
+      - instanceType
+      title: StudyIdentifier
+    StudyIntervention-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        role:
+          $ref: '#/components/schemas/Code'
+        type:
+          $ref: '#/components/schemas/Code'
+        minimumResponseDuration:
+          anyOf:
+          - $ref: '#/components/schemas/Quantity'
+          - type: 'null'
+        codes:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Codes
+          default: []
+        administrations:
+          items:
+            $ref: '#/components/schemas/AgentAdministration-Input'
+          type: array
+          title: Administrations
+        productDesignation:
+          $ref: '#/components/schemas/Code'
+        pharmacologicClass:
+          anyOf:
+          - $ref: '#/components/schemas/Code'
+          - type: 'null'
+        instanceType:
+          const: StudyIntervention
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - role
+      - type
+      - administrations
+      - productDesignation
+      - instanceType
+      title: StudyIntervention
+    StudyIntervention-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        role:
+          $ref: '#/components/schemas/Code'
+        type:
+          $ref: '#/components/schemas/Code'
+        minimumResponseDuration:
+          anyOf:
+          - $ref: '#/components/schemas/Quantity'
+          - type: 'null'
+        codes:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Codes
+          default: []
+        administrations:
+          items:
+            $ref: '#/components/schemas/AgentAdministration-Output'
+          type: array
+          title: Administrations
+        productDesignation:
+          $ref: '#/components/schemas/Code'
+        pharmacologicClass:
+          anyOf:
+          - $ref: '#/components/schemas/Code'
+          - type: 'null'
+        instanceType:
+          const: StudyIntervention
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - role
+      - type
+      - administrations
+      - productDesignation
+      - instanceType
+      title: StudyIntervention
+    StudyProtocolDocument-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        versions:
+          items:
+            $ref: '#/components/schemas/StudyProtocolDocumentVersion-Input'
+          type: array
+          title: Versions
+          default: []
+        instanceType:
+          const: StudyProtocolDocument
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - instanceType
+      title: StudyProtocolDocument
+    StudyProtocolDocument-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        versions:
+          items:
+            $ref: '#/components/schemas/StudyProtocolDocumentVersion-Output'
+          type: array
+          title: Versions
+          default: []
+        instanceType:
+          const: StudyProtocolDocument
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - instanceType
+      title: StudyProtocolDocument
+    StudyProtocolDocumentVersion-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        protocolVersion:
+          type: string
+          title: Protocolversion
+        protocolStatus:
+          $ref: '#/components/schemas/Code'
+        dateValues:
+          items:
+            $ref: '#/components/schemas/GovernanceDate-Input'
+          type: array
+          title: Datevalues
+          default: []
+        contents:
+          items:
+            $ref: '#/components/schemas/NarrativeContent'
+          type: array
+          title: Contents
+          default: []
+        childIds:
+          items:
+            type: string
+          type: array
+          title: Childids
+          default: []
+        instanceType:
+          const: StudyProtocolDocumentVersion
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - protocolVersion
+      - protocolStatus
+      - instanceType
+      title: StudyProtocolDocumentVersion
+    StudyProtocolDocumentVersion-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        protocolVersion:
+          type: string
+          title: Protocolversion
+        protocolStatus:
+          $ref: '#/components/schemas/Code'
+        dateValues:
+          items:
+            $ref: '#/components/schemas/GovernanceDate-Output'
+          type: array
+          title: Datevalues
+          default: []
+        contents:
+          items:
+            $ref: '#/components/schemas/NarrativeContent'
+          type: array
+          title: Contents
+          default: []
+        childIds:
+          items:
+            type: string
+          type: array
+          title: Childids
+          default: []
+        instanceType:
+          const: StudyProtocolDocumentVersion
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - protocolVersion
+      - protocolStatus
+      - instanceType
+      title: StudyProtocolDocumentVersion
+    StudySite-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        currentEnrollment:
+          anyOf:
+          - $ref: '#/components/schemas/SubjectEnrollment-Input'
+          - type: 'null'
+        instanceType:
+          const: StudySite
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - instanceType
+      title: StudySite
+    StudySite-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        currentEnrollment:
+          anyOf:
+          - $ref: '#/components/schemas/SubjectEnrollment-Output'
+          - type: 'null'
+        instanceType:
+          const: StudySite
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - instanceType
+      title: StudySite
+    StudyTitle:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        text:
+          type: string
+          title: Text
+        type:
+          $ref: '#/components/schemas/Code'
+        instanceType:
+          const: StudyTitle
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - text
+      - type
+      - instanceType
+      title: StudyTitle
+    StudyVersion-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        versionIdentifier:
+          type: string
+          title: Versionidentifier
+        rationale:
+          type: string
+          title: Rationale
+        studyType:
+          anyOf:
+          - $ref: '#/components/schemas/Code'
+          - type: 'null'
+        studyPhase:
+          anyOf:
+          - $ref: '#/components/schemas/AliasCode'
+          - type: 'null'
+        documentVersionId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentversionid
+        dateValues:
+          items:
+            $ref: '#/components/schemas/GovernanceDate-Input'
+          type: array
+          title: Datevalues
+          default: []
+        amendments:
+          items:
+            $ref: '#/components/schemas/StudyAmendment-Input'
+          type: array
+          title: Amendments
+          default: []
+        businessTherapeuticAreas:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Businesstherapeuticareas
+          default: []
+        studyIdentifiers:
+          items:
+            $ref: '#/components/schemas/StudyIdentifier-Input'
+          type: array
+          title: Studyidentifiers
+          default: []
+        studyDesigns:
+          items:
+            $ref: '#/components/schemas/StudyDesign-Input'
+          type: array
+          title: Studydesigns
+          default: []
+        titles:
+          items:
+            $ref: '#/components/schemas/StudyTitle'
+          type: array
+          title: Titles
+        instanceType:
+          const: StudyVersion
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - versionIdentifier
+      - rationale
+      - titles
+      - instanceType
+      title: StudyVersion
+    StudyVersion-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        versionIdentifier:
+          type: string
+          title: Versionidentifier
+        rationale:
+          type: string
+          title: Rationale
+        studyType:
+          anyOf:
+          - $ref: '#/components/schemas/Code'
+          - type: 'null'
+        studyPhase:
+          anyOf:
+          - $ref: '#/components/schemas/AliasCode'
+          - type: 'null'
+        documentVersionId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Documentversionid
+        dateValues:
+          items:
+            $ref: '#/components/schemas/GovernanceDate-Output'
+          type: array
+          title: Datevalues
+          default: []
+        amendments:
+          items:
+            $ref: '#/components/schemas/StudyAmendment-Output'
+          type: array
+          title: Amendments
+          default: []
+        businessTherapeuticAreas:
+          items:
+            $ref: '#/components/schemas/Code'
+          type: array
+          title: Businesstherapeuticareas
+          default: []
+        studyIdentifiers:
+          items:
+            $ref: '#/components/schemas/StudyIdentifier-Output'
+          type: array
+          title: Studyidentifiers
+          default: []
+        studyDesigns:
+          items:
+            $ref: '#/components/schemas/StudyDesign-Output'
+          type: array
+          title: Studydesigns
+          default: []
+        titles:
+          items:
+            $ref: '#/components/schemas/StudyTitle'
+          type: array
+          title: Titles
+        instanceType:
+          const: StudyVersion
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - versionIdentifier
+      - rationale
+      - titles
+      - instanceType
+      title: StudyVersion
+    SubjectEnrollment-Input:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        type:
+          $ref: '#/components/schemas/Code'
+        code:
+          anyOf:
+          - $ref: '#/components/schemas/AliasCode'
+          - type: 'null'
+        instanceType:
+          const: SubjectEnrollment
+          title: Instancetype
+        quantity:
+          $ref: '#/components/schemas/Quantity'
+      type: object
+      required:
+      - id
+      - type
+      - instanceType
+      - quantity
+      title: SubjectEnrollment
+    SubjectEnrollment-Output:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        type:
+          $ref: '#/components/schemas/Code'
+        code:
+          anyOf:
+          - $ref: '#/components/schemas/AliasCode'
+          - type: 'null'
+        instanceType:
+          const: SubjectEnrollment
+          title: Instancetype
+        quantity:
+          $ref: '#/components/schemas/Quantity'
+      type: object
+      required:
+      - id
+      - type
+      - instanceType
+      - quantity
+      title: SubjectEnrollment
+    SyntaxTemplateDictionary:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        parameterMap:
+          type: object
+          title: Parametermap
+        instanceType:
+          const: SyntaxTemplateDictionary
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - parameterMap
+      - instanceType
+      title: SyntaxTemplateDictionary
+    Timing:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        type:
+          $ref: '#/components/schemas/Code'
+        value:
+          type: string
+          title: Value
+        relativeToFrom:
+          $ref: '#/components/schemas/Code'
+        relativeFromScheduledInstanceId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Relativefromscheduledinstanceid
+        relativeToScheduledInstanceId:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Relativetoscheduledinstanceid
+        windowLower:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Windowlower
+        windowUpper:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Windowupper
+        window:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Window
+        instanceType:
+          const: Timing
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - type
+      - value
+      - relativeToFrom
+      - instanceType
+      title: Timing
+    TransitionRule:
+      properties:
+        id:
+          type: string
+          minLength: 1
+          title: Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        label:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Label
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Description
+        text:
+          type: string
+          title: Text
+        instanceType:
+          const: TransitionRule
+          title: Instancetype
+      type: object
+      required:
+      - id
+      - name
+      - text
+      - instanceType
+      title: TransitionRule
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    Wrapper-Input:
+      properties:
+        study:
+          $ref: '#/components/schemas/Study-Input'
+      type: object
+      required:
+      - study
+      title: Wrapper
+    Wrapper-Output:
+      properties:
+        study:
+          $ref: '#/components/schemas/Study-Output'
+      type: object
+      required:
+      - study
+      title: Wrapper
+tags:
+- name: Production
+  description: Routes that form the production specification.

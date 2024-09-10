@@ -1,0 +1,1 @@
+Extract the table found in the file. Convert it into a JSON structure so that all of the information is preserved and easily retrievable. Consider the details like header structure, footnotes, etc. 
