@@ -1,12 +1,45 @@
 Tabs (Excel) / Schmas (JSON) from USDM that we should generate to "automate edc build"
     
-    mainTimeline
+    mainTimeline (required)
 
-    studyDesignEncounters - each visit
-    studyDesignActivities - each activity
+    studyDesignEncounters - each visit (required)
 
-    studyDesignProcedures - mapping activities to CTs such as SNOMED, Sponsor-Defined
+    studyDesignActivities - each activity (required) - map to the eCRFs
+
+        Groups together data capture and procedures
+        Can be reused aacross multiple points within a study timeline via the ScheduledActivityInstance class
+        Can be linked to 1 or more procedures, 1 or more biomedical concepts, 1 or more groups of biomedical concepts, and/or 1 or more surrogate biomediocal concepts
+        May be conditional
+
+    studyDesignProcedures - mapping activities to CTs for procedures such as SNOMED, Sponsor-Defined (optional); BCs
+        Procedures required by the activity to be detailed
+
     
-    studyDesignTiming - 
+    studyDesignTiming - timing of encounters (visits) and the activities to be performed within those encounters (optional - although we should define visit windows)
+        Allows for multiple planned timings within an encounter as well as for decision points in the study processing
+        Scheduled Activity Instances and Scheduled Decision Instances
+            Inherit from ScheduledInstance classes
 
-    activityInstanceTimeline - unplanned visits --> When do we create instance classes?
+        Timeline - components
+            entry point with entry conditions (ScheduleTimeline class)
+            sequence of steps (ScheduledActivityInstance class and ScheduledDecisionInstance class)
+            timing relating the steps (Timing class)
+            1 or more exists (ScheduledTimelineExit)
+
+            ScheduledActivityInstance is the link between high-level study design defined by the StudyArms and StudyEpochs classes, the Encounter classes, and the detailed study design defined by the Activity class
+
+        Timing
+            Relative time of before or after, and an anchor time that is Fixed
+
+        Decisions and Branching
+            Handled using instances of SchedueledDecisionInstance class within a timeline
+
+        Unscheduled Visists
+            Handled by creating separate timelines for each unscheduled "event" that needs to be handled within the study design
+            A study would typically have 1 "main" timeline with a condition such as "subject identified"
+            Further timelines can be created and linked to the StudyDesign instance with the timeline having an appropriate conidition (e.g. Adverse Event, Lost contact with the subject)
+
+    activityInstanceTimeline - unplanned visits --> When do we create instance classes? 
+
+    Azure OpenAI Key - GPT3.5 or 4o?
+                    Token Limit?
