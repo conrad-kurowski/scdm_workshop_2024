@@ -1,0 +1,12 @@
+Tabs (Excel) / Schmas (JSON) from USDM that we should generate to "automate edc build"
+    
+    mainTimeline
+
+    studyDesignEncounters - each visit
+    studyDesignActivities - each activity
+
+    studyDesignProcedures - mapping activities to CTs such as SNOMED, Sponsor-Defined
+    
+    studyDesignTiming - 
+
+    activityInstanceTimeline - unplanned visits --> When do we create instance classes?
