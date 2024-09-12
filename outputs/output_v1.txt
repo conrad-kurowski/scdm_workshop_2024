@@ -1,0 +1,23 @@
+Here’s the initial mapping based on the Schedule of Assessments (SOA) provided for the Paloma3 clinical trial, aligning the activities with the relevant eCRFs from the provided library:
+
+| **Activity Name**                    | **Electronic Case Report Form (eCRF) Form RefName** | **Electronic Case Report Form (eCRF) Label**      |
+|--------------------------------------|----------------------------------------------------|--------------------------------------------------|
+| Eligibility Assessment               | IE                                                 | Inclusion/Exclusion Criteria Not Met             |
+| Demographics                         | DM                                                 | Demographics                                     |
+| Medical History                      | MH                                                 | Medical History                                  |
+| Height                               | PE                                                 | Physical Examination                             |
+| Weight                               | PE                                                 | Physical Examination                             |
+| Physical Exam                        | PE                                                 | Physical Examination                             |
+| Vital Signs                          | VS                                                 | Vital Signs                                      |
+| 12-lead ECG                          | EG                                                 | ECG Test Results                                 |
+| Ophthalmologic Assessments           | OE                                                 | Ophthalmic Examinations                          |
+| AEs/SAEs                             | AE, SA                                             | Adverse Events, Serious Adverse Events           |
+| Prior/Concomitant Therapies          | CM                                                 | Concomitant/Prior Medications                    |
+| Hematology & Chemistry               | LB                                                 | Laboratory Test Results                          |
+| Pregnancy Test                       | LB                                                 | Laboratory Test Results                          |
+| Blood for PK                         | PC                                                 | Pharmacokinetics Concentrations                  |
+| Radiographic Tumor Assessment        | RS, TR                                             | Disease Response and Clin Classification, Tumor/Lesion Results |
+| Survival Follow-Up                   | DS                                                 | Disposition                                      |
+| Trial Intervention                   | EX                                                 | Exposure                                         |
+
+This mapping aligns the clinical trial activities with the appropriate eCRFs from the library, ensuring proper data collection and management for the Paloma3 study. If you need further refinement or additional activities mapped, feel free to ask!
