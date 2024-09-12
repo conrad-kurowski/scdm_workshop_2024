@@ -1,0 +1,90 @@
+{
+  "Schedule_of_Activities": [
+    {
+      "Day": "Screening",
+      "Time_Post_Initial_Treatment": ["Study Day -2 to 0"],
+      "Assessments": {
+        "Informed_consent": "x",
+        "Inclusion/exclusion_criteria": "x",
+        "Demographic_data": "x",
+        "Randomization": "x",
+        "Medical_history": "x",
+        "Complete_physical_examination": "x",
+        "Weight": "x",
+        "COVID-19_diagnosis": "x",
+        "Chest_X-ray/CT_scan": "x",
+        "ECG": "x",
+        "Pregnancy_test": "x",
+        "PaO2/FiO2": "Optional",
+        "SpO2": "x",
+        "Vital_signs": "x",
+        "Ordinal_scoring": "",
+        "Adverse_events": "",
+        "Concomitant_medications": ""
+      }
+    },
+    {
+      "Day": "Baseline",
+      "Time_Post_Initial_Treatment": ["0", "Pre-dose (-4 hrs)", "15 min", "After end of infusion (+1 hr)", "24 hrs (±4 hrs)", "36 hrs (±4 hrs)"],
+      "Assessments": {
+        "Informed_consent": "",
+        "Inclusion/exclusion_criteria": "x",
+        "Demographic_data": "",
+        "Randomization": "",
+        "Medical_history": "",
+        "Complete_physical_examination": "",
+        "Weight": "",
+        "COVID-19_diagnosis": "",
+        "Chest_X-ray/CT_scan": "",
+        "ECG": "",
+        "Pregnancy_test": "",
+        "PaO2/FiO2": ["", "", "", "", "Optional", ""],
+        "SpO2": ["x", "", "x", "", "x", ""],
+        "Vital_signs": ["x", "", "x", "", "x", ""],
+        "Ordinal_scoring": ["x", "", "", "", "", ""],
+        "Adverse_events": ["x", "", "", "", "", ""],
+        "Concomitant_medications": ["x", "", "", "", "", ""]
+      }
+    },
+    {
+      "Day": "1",
+      "Time_Post_Initial_Treatment": ["0", "Pre-dose (-4 hrs)", "15 min", "After end of infusion (+1 hr)", "24 hrs (±4 hrs)", "36 hrs (±4 hrs)"],
+      "Assessments": {
+        "Hematology": ["x", "", "x", "", "x", ""],
+        "Chemistry": ["x", "", "x", "", "x", ""],
+        "Study_drug_administration": ["", "x", "", "", "", ""],
+        "Central_Labs": {
+          "Serum_PD": ["x", "", "x", "", "x", "x"],
+          "Serum_PK": ["x", "", "x", "", "x", "x"],
+          "Serum_sample_for_exploratory_biomarkers": ["x", "", "", "", "x", ""],
+          "SARS-CoV-2_viral_load": ["x", "", "", "", "x", ""],
+          "Serum_SARS-CoV-2_antibody_titer": ["", "", "", "", "x", ""],
+          "Cryopreserved_PBMCs": ["x", "", "", "", "x", ""],
+          "Whole_blood_in_PAXgene_tubes_for_RNA_analyses": ["x", "", "", "", "", ""]
+        }
+      }
+    }
+  ],
+  "Footnotes": [
+    {
+      "a": "Results from standard-of-care tests or examinations performed prior to obtaining informed consent and within 48 hours before randomization may be used; such tests do not need to be repeated for screening.",
+      "b": "Informed consent must be documented before any study-specific screening procedure is performed.",
+      "c": "A complete physical examination includes evaluation of various systems and abnormalities should be recorded.",
+      "d": "COVID-19 test to confirm diagnosis should be performed within 7 days of randomization.",
+      "e": "Chest X-ray or CT scans should be performed within 48 hours prior to randomization.",
+      "f": "Positive urine pregnancy test results will be confirmed with a serum pregnancy test.",
+      "g": "If arterial blood gases are measured.",
+      "h": "Vital sign measurements and NEWS2-specific assessments should be recorded twice daily.",
+      "i": "Clinical status using the ordinal scale should be recorded at baseline and then daily.",
+      "j": "Serious adverse events should be reported after informed consent until 60 days after the final dose of study drug.",
+      "k": "Medication details should be recorded from 7 days prior to study drug initiation to study completion.",
+      "l": "Hematology includes various blood counts and subsets.",
+      "m": "Chemistry panel includes various biochemical tests.",
+      "n": "Study drug should be administered after sample collection for pharmacodynamic and exploratory biomarker analyses.",
+      "o": "CRP, IL-6, and sIL-6R samples should be drawn at specified times around the infusion.",
+      "p": "PK samples should be drawn at specified times around the infusion.",
+      "q": "Viral load will be assessed by nasopharyngeal sw"
+    }
+  ]
+}
+  
