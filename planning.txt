@@ -43,3 +43,16 @@ Tabs (Excel) / Schmas (JSON) from USDM that we should generate to "automate edc 
 
     Azure OpenAI Key - GPT3.5 or 4o?
                     Token Limit?
+
+
+TODO (9/12):
+    - Update eCRF sample forms to include scenario-based forms (local collection, central collection, etc.)
+        - Requires additional CDISC Library API calls and data wrangling to finalize the JSON / CSV structure that is fed in
+    
+    - Build initial prompts for SOA Visit --> USDM Encounters sheet / structure drafting
+
+    - Build initial prompts for final 'Main Timeline' creation
+        Decision to exclude specific timelines for unplanned visits and acitivities that consist of a series of procedures
+
+    - Test the Azure OpenAI Key - Requires the 'endpoint' be defined to establish the connection
+    - Finalize follow-along Jupyter notebooks for automation of edc build; 
