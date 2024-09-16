@@ -56,3 +56,9 @@ TODO (9/12):
 
     - Test the Azure OpenAI Key - Requires the 'endpoint' be defined to establish the connection
     - Finalize follow-along Jupyter notebooks for automation of edc build; 
+
+
+Extracting visits
+
+    studyDesignTiming will capture visit windows
+    

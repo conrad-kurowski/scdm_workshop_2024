@@ -1,0 +1,12 @@
+| name  | description          | label       | window        | type  |
+|-------|----------------------|-------------|---------------|-------|
+| E1    | Screening encounter  | SCR         | -28 to -1 days| Visit |
+| E2    | Cycle 1 Day 1        | Day 1       | ±2 days       | Visit |
+| E3    | Cycle 1 Day 15       | Day 15      | ±2 days       | Visit |
+| E4    | Cycle 2 Day 1        | Day 1       | ±2 days       | Visit |
+| E5    | Cycle 2 Day 15       | Day 15      | ±2 days       | Visit |
+| E6    | Cycle 3 Day 1        | Day 1       | ±2 days       | Visit |
+| E7    | Cycle 4 Day 1        | Day 1       | ±2 days       | Visit |
+| E8    | End of Treatment     | EOT         | ±7 days       | Visit |
+| E9    | Follow-Up 1          | FU 1        | ±7 days       | Visit |
+| E10   | Follow-Up 2          | FU 2        | ±7 days       | Visit |
