@@ -2,7 +2,7 @@ Title 1:
 GenAI for Digital Data Flow – Harnessing LLMs for Study Start-Up and Build Activities
 Abstract 1:
 This workshop will highlight the critical need for clinical data professionals to stay current with Gen AI technologies. Participants will explore real-world use cases such as automated data cleaning, anomaly detection, and predictive analytics.
-Description 1: Generative AI (Gen AI) is revolutionizing Clinical Data Sciences by automating complex data management tasks, enhancing data quality, and providing deeper insights into clinical trials. This workshop will highlight the critical need for clinical data professionals to stay current with Gen AI technologies. Participants will explore real-world use cases such as Protocol Digitization, Study Build Automation, Specification Automation, and Test Data Generation for Study Start-Up. Through demo-led sessions, attendees will gain practical experience applying Gen AI to a clinical study, equipping them with the skills to integrate these innovations into their daily workflows and evolve as Clinical Data Scientists.
+Description 1: Generative AI (Gen AI) is revolutionizing Clinical Data Sciences by automating complex data management tasks, enhancing data quality, and providing deeper insights into clinical trials. This workshop will highlight the critical need for clinical data professionals to stay current with Gen AI technologies. Participants will explore real-world use cases such as Protocol Digitization, Study Build and Specification Automation, as well as Test Data Generation for Study Start-Up. Through demo-led sessions, attendees will gain practical experience applying Gen AI to a clinical study, equipping them with the skills to integrate these innovations into their daily workflows and evolve as Clinical Data Scientists.
 
 Title 2:
 Think Like a Startup | Reinventing Data Management in a Generative AI and Digital Dataflow Future
@@ -36,3 +36,21 @@ Demo led session for Gen AI use cases [Pfizer & Saama] [90 to 105 mins]
 
 Accenture led second half of the session (remaining 90+ mins)
 Group discussion on profound impact of GenAI on the data, data management, and the role of the data manager in driving twin outcomes: benefit for patients, and greater productivity for Biopharma through technology. Audience will be divided into groups (depending on # of attendees)  with some provocative questions, to brainstorm and present the opportunities with GenAI
+
+
+Title: Reinventing Clinical Data Management in a Generative AI and Digital Dataflow Future: Harnessing LLMs for Study Start-Up and Build Activities
+
+This workshop will highlight the critical need for clinical data professionals to stay current with GenAI technologies. 
+Through panel discussions with industry thought leaders, participants will receive an overview of the technologies (Generative AI, Protocol Digitization, Digital Dataflow, Direct Data Capture) helping reinvent Clinical development.
+
+Through demo-driven sessions, attendees will gain practical experience in applying GenAI to clinical data management activities, exploring real-world use cases in study start-up and build such as:
+    Protocol Digitization
+    Study Build and Specification Automation
+    Synthetic Test Dataset Generation 
+
+Finally, through group activities and interactive discussions, participants will not only collaborate to identify current opportunities with GenAI, but also future opportunities and how to redefine / pivot organizations to usher in the next era of pharmaceutical development. Attendees will be equipped with the required skills and knowledge to evolve as Clinical Data Scientist.
+
+
+
+
+
