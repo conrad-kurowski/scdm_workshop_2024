@@ -1,0 +1,75 @@
+ 
+**System Prompt: Final Specification for building the electronic data capture (EDC) system for a Clinical Trial**
+
+You will be provided a file containing a Schedule of Activities / Schedule of Assessments (SOA) from a Clinical Trial Protocol document.
+
+Additionally you are provided the below inputs:
+    1. The extracted **visits** from the **Schedule of Activities / Schedule of Assessments (SOA)** from the Clinical Trial Protocol document.
+    2. A mapping of each **activity** found in the **Schedule of Activities / Schedule of Assessments (SOA)** from the Clincal Trial Protocol document, to the required **eCRFs (Electronic Case Report Forms)** utilized to collect data for that **activity** for the clinical trial.
+    3. A is the template for the ouput with provided sample data. Replace the sample data with your final output. 
+
+Your task is to populate the provided template output specification for building the electronic data capture (EDC) system, using the provided template. Make sure to capture all the required details.
+
+1.
+| name  | description          | label       | window        | type  |
+|-------|----------------------|-------------|---------------|-------|
+| E1    | Screening encounter  | SCR         | -28 to -1 days| Visit |
+| E2    | Cycle 1 Day 1        | Day 1       | ±2 days       | Visit |
+| E3    | Cycle 1 Day 15       | Day 15      | ±2 days       | Visit |
+| E4    | Cycle 2 Day 1        | Day 1       | ±2 days       | Visit |
+| E5    | Cycle 2 Day 15       | Day 15      | ±2 days       | Visit |
+| E6    | Cycle 3 Day 1        | Day 1       | ±2 days       | Visit |
+| E7    | Cycle 4 Day 1        | Day 1       | ±2 days       | Visit |
+| E8    | End of Treatment     | EOT         | ±7 days       | Visit |
+| E9    | Follow-Up 1          | FU 1        | ±7 days       | Visit |
+| E10   | Follow-Up 2          | FU 2        | ±7 days       | Visit |
+
+2.
+| **Activity Name**                    | **Electronic Case Report Form (eCRF) Form RefName** | **Electronic Case Report Form (eCRF) Label**      |
+|--------------------------------------|----------------------------------------------------|--------------------------------------------------|
+| Eligibility Assessment               | IE                                                 | Inclusion/Exclusion Criteria Not Met             |
+| Demographics                         | DM                                                 | Demographics                                     |
+| Medical History                      | MH                                                 | Medical History                                  |
+| Height                               | PE                                                 | Physical Examination                             |
+| Weight                               | PE                                                 | Physical Examination                             |
+| Physical Exam                        | PE                                                 | Physical Examination                             |
+| Vital Signs                          | VS                                                 | Vital Signs                                      |
+| 12-lead ECG                          | EG                                                 | ECG Test Results                                 |
+| Ophthalmologic Assessments           | OE                                                 | Ophthalmic Examinations                          |
+| AEs/SAEs                             | AE, SA                                             | Adverse Events, Serious Adverse Events           |
+| Prior/Concomitant Therapies          | CM                                                 | Concomitant/Prior Medications                    |
+| Hematology & Chemistry               | LB                                                 | Laboratory Test Results                          |
+| Pregnancy Test                       | LB                                                 | Laboratory Test Results                          |
+| Blood for PK                         | PC                                                 | Pharmacokinetics Concentrations                  |
+| Radiographic Tumor Assessment        | RS, TR                                             | Disease Response and Clin Classification, Tumor/Lesion Results |
+| Survival Follow-Up                   | DS                                                 | Disposition                                      |
+| Trial Intervention                   | EX                                                 | Exposure  
+
+3.
+Name|Main Timeline|name||||SCREEN1|SCREEN2|DOSE|WK2|WK4|WK6|WK8|WK8N|WK12|WK12N|WK16|WK16N|WK20|WK20N|WK24|WK26
+Description|This is the main timeline for the study design.|description||||-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+||label||||Screen One|Screen Two|Dose|Week 2|Week 4|Week 6|Week 8|Week NPI|Week 12|Week 12 NPI|Week 16|Week 16 NPI|Week 20|Week 20 NPI|Week 24|Week 26
+||type||||Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity
+||default||||SCREEN2|DOSE|WK2|WK4|WK6|WK8|WK8N|WK12|WK12N|WK16|WK16N|WK20|WK20N|WK24|WK26|EXIT
+||condition|||||||||||||||||||||||
+||epoch||||Screening|Screening|Treatment 1|Treatment 1|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 3|Follow-Up
+||encounter||||E1|E2|E3|E4|E5|E7|E8|E8|E9|E9|E10|E10|E11|E11|E12|E13
+Child Activity|Electronic Case Report Form (eCRF) Form RefName|Electronic Case Report Form (eCRF) Label|||||||||||||||||
+Informed consent||||X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Inclusion/exclusion criteria|IE|Inclusion/Exclusion Criteria Not Met|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Patient number assigned|DM|Demographics|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Demographics|DM|Demographics|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Hachinski||||X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+MMSE||||X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Physical examination|PE|Physical Examination|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|X
+Medical history|MH|Medical History|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Habits|SU|Substance Use|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Chest X-ray|PR|Procedures|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Apo E genotyping|GF|Genomics Findings|-|-|-|X|-|-|-|-|-|-|-|-|-|-|-|-
+Patient randomised|DS|Disposition|-|-|X|-|-|-|-|-|-|-|-|-|-|-|-|-
+Vital signs / Temperature|VS|Vital Signs|X|X|X|X|X|X|X|-|X|-|X|-|X|-|X|X
+Ambulatory ECG placed|EG|ECG Test Results|-|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Ambulatory ECG removed|EG|ECG Test Results|-|-|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+ECG|EG|ECG Test Results|X|-|-|X|X|X|X|-|X|-|X|-|X|-|X|X
+
+Begin!

@@ -40,6 +40,7 @@ Group discussion on profound impact of GenAI on the data, data management, and t
 
 Title: Reinventing Clinical Data Management in a Generative AI and Digital Dataflow Future: Harnessing LLMs for Study Start-Up and Build Activities
 
+Abstract:
 This workshop will highlight the critical need for clinical data professionals to stay current with GenAI technologies. 
 Through panel discussions with industry thought leaders, participants will receive an overview of the technologies (Generative AI, Protocol Digitization, Digital Dataflow, Direct Data Capture) helping reinvent Clinical development.
 
