@@ -1,0 +1,25 @@
+Name|Main Timeline|name||||SCREEN1|SCREEN2|DOSE|WK2|WK4|WK6|WK8|WK8N|WK12|WK12N|WK16|WK16N|WK20|WK20N|WK24|WK26
+Description|This is the main timeline for the study design.|description||||-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+||label||||Screen One|Screen Two|Dose|Week 2|Week 4|Week 6|Week 8|Week NPI|Week 12|Week 12 NPI|Week 16|Week 16 NPI|Week 20|Week 20 NPI|Week 24|Week 26
+||type||||Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity|Activity
+||default||||SCREEN2|DOSE|WK2|WK4|WK6|WK8|WK8N|WK12|WK12N|WK16|WK16N|WK20|WK20N|WK24|WK26|EXIT
+||condition|||||||||||||||||||||||
+||epoch||||Screening|Screening|Treatment 1|Treatment 1|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 2|Treatment 3|Follow-Up
+||encounter||||E1|E2|E3|E4|E5|E7|E8|E8|E9|E9|E10|E10|E11|E11|E12|E13
+Child Activity|Electronic Case Report Form (eCRF) Form RefName|Electronic Case Report Form (eCRF) Label|||||||||||||||||
+Informed consent||||X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Inclusion/exclusion criteria|IE|Inclusion/Exclusion Criteria Not Met|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Patient number assigned|DM|Demographics|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Demographics|DM|Demographics|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Hachinski||||X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+MMSE||||X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Physical examination|PE|Physical Examination|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|X
+Medical history|MH|Medical History|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Habits|SU|Substance Use|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Chest X-ray|PR|Procedures|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Apo E genotyping|GF|Genomics Findings|-|-|-|X|-|-|-|-|-|-|-|-|-|-|-|-
+Patient randomised|DS|Disposition|-|-|X|-|-|-|-|-|-|-|-|-|-|-|-|-
+Vital signs / Temperature|VS|Vital Signs|X|X|X|X|X|X|X|-|X|-|X|-|X|-|X|X
+Ambulatory ECG placed|EG|ECG Test Results|-|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+Ambulatory ECG removed|EG|ECG Test Results|-|-|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-
+ECG|EG|ECG Test Results|X|-|-|X|X|X|X|-|X|-|X|-|X|-|X|X

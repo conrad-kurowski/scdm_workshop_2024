@@ -1,14 +1,11 @@
  
 **System Prompt: Final Specification for building the electronic data capture (EDC) system for a Clinical Trial**
 
-You will be provided a file containing a Schedule of Activities / Schedule of Assessments (SOA) from a Clinical Trial Protocol document.
+You will be provided an input file containing a Schedule of Activities / Schedule of Assessments (SOA) from a Clinical Trial Protocol document.
 
 Additionally you are provided the below inputs:
     1. The extracted **visits** from the **Schedule of Activities / Schedule of Assessments (SOA)** from the Clinical Trial Protocol document.
     2. A mapping of each **activity** found in the **Schedule of Activities / Schedule of Assessments (SOA)** from the Clincal Trial Protocol document, to the required **eCRFs (Electronic Case Report Forms)** utilized to collect data for that **activity** for the clinical trial.
-    3. A is the template for the ouput with provided sample data. Replace the sample data with your final output. 
-
-Your task is to populate the provided template output specification for building the electronic data capture (EDC) system, using the provided template. Make sure to capture all the required details.
 
 1.
 | name  | description          | label       | window        | type  |
@@ -45,6 +42,8 @@ Your task is to populate the provided template output specification for building
 | Survival Follow-Up                   | DS                                                 | Disposition                                      |
 | Trial Intervention                   | EX                                                 | Exposure  
 
+Lastly you are provided the following template with sample data to build your final output. Replace the sample data with information provided in the input file, as well as inputs 1 and 2 above. Adjust the columns of the output table, representing study **vists** to align with the inputs provided.
+
 3.
 Name|Main Timeline|name||||SCREEN1|SCREEN2|DOSE|WK2|WK4|WK6|WK8|WK8N|WK12|WK12N|WK16|WK16N|WK20|WK20N|WK24|WK26
 Description|This is the main timeline for the study design.|description||||-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-
@@ -71,5 +70,7 @@ Vital signs / Temperature|VS|Vital Signs|X|X|X|X|X|X|X|-|X|-|X|-|X|-|X|X
 Ambulatory ECG placed|EG|ECG Test Results|-|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-
 Ambulatory ECG removed|EG|ECG Test Results|-|-|X|-|-|-|-|-|-|-|-|-|-|-|-|-|-
 ECG|EG|ECG Test Results|X|-|-|X|X|X|X|-|X|-|X|-|X|-|X|X
+
+Your task is to populate the provided template output specification, with the information provided in the input file, as well as in inputs 1 and 2. Make sure to capture all the required details for each **activity** and **visit**. 
 
 Begin!
