@@ -1,0 +1,26 @@
+Here is the mapping of activities from the Schedule of Activities (SOA) provided in your clinical trial to the appropriate eCRF forms based on the available library:
+
+| **Activity Name**                       | **Electronic Case Report Form (eCRF) Form RefName** | **Electronic Case Report Form (eCRF) Label**        |
+|-----------------------------------------|-----------------------------------------------------|-----------------------------------------------------|
+| Main Informed Consent (ICF)             | DM                                                  | Demographics                                        |
+| Eligibility Assessment                  | IE                                                  | Inclusion/Exclusion Criteria Not Met                 |
+| Demographics                            | DM                                                  | Demographics                                        |
+| Medical History                         | MH                                                  | Medical History                                     |
+| Height                                  | PE                                                  | Physical Examination                                |
+| Weight                                  | PE                                                  | Physical Examination                                |
+| Physical Exam                           | PE                                                  | Physical Examination                                |
+| Vital Signs                             | VS                                                  | Vital Signs                                         |
+| 12-lead ECG                             | EG                                                  | ECG Test Results                                    |
+| Ophthalmologic Assessments              | OE                                                  | Ophthalmic Examinations                             |
+| Adverse Events (AEs/SAEs)               | AE, SA                                               | Adverse Events, Serious Adverse Events              |
+| Prior/Concomitant Therapies             | CM                                                  | Concomitant/Prior Medications                       |
+| Hematology & Chemistry                  | LB                                                  | Laboratory Test Results                             |
+| Pregnancy Test                          | LB                                                  | Laboratory Test Results                             |
+| Blood for PK                            | PC                                                  | Pharmacokinetics Concentrations                     |
+| Radiographic Tumor Assessment           | TR                                                  | Tumor/Lesion Results                                |
+| CT/MRI of Brain                         | TR                                                  | Tumor/Lesion Results                                |
+| EQ-5D-5L EORTC QLQ-C30                  | SC                                                  | Subject Characteristics                             |
+| Trial Intervention                      | EX                                                  | Exposure                                            |
+| Comparator/Combination Partner          | EX                                                  | Exposure                                            |
+
+This mapping aligns the activities in the schedule of assessments with the appropriate eCRF domains to ensure structured data collection throughout the trial. Let me know if you need any adjustments or further details!
