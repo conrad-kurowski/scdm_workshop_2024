@@ -25,7 +25,7 @@ Demo led session for Gen AI use cases [Pfizer & Saama] [90 to 105 mins]
 * Mahesh Narasimhan -Saama
 * Prasanna Rao -Saama
 
-    Use Cases to be Demoed (Tentative, Time Permitting):
+    Use Cases to be Demoed (Tentative, Time Permitting): (20 minutes each)
         Digitized Protocol SOA via OpenStudyBuilder 
         EDC Build Automation - Predict required CRFs, build a database build spec. 
         Generate iDRP / Data Management planned 
