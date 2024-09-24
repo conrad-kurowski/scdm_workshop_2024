@@ -1,0 +1,3 @@
+Edit Check Name: AE End Date After Start Date
+Edit Check Description: Validates that the AE end date is later than the AE start date to ensure logical consistency
+Edit Check Logic: AE.AEENDAT < AE.AESTDAT

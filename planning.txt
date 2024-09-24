@@ -61,4 +61,16 @@ TODO (9/12):
 Extracting visits
 
     studyDesignTiming will capture visit windows
+
+
+Edit Check Activity
+
+    Sample edit check
+    Extract the forms and items from the check description / logic
+        Build a draft dataset with these
+    Retrieve the additional metadata from the EDC regarding all the form and items extracted
+    Build the SQL query to test the check
+
+    
+
     
