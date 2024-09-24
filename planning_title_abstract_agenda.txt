@@ -26,10 +26,25 @@ Demo led session for Gen AI use cases [Pfizer & Saama] [90 to 105 mins]
 * Prasanna Rao -Saama
 
     Use Cases to be Demoed (Tentative, Time Permitting): (20 minutes each)
-        Digitized Protocol SOA via OpenStudyBuilder 
-        EDC Build Automation - Predict required CRFs, build a database build spec. 
-        Generate iDRP / Data Management planned 
-        Synthetic Edit Check Test Data 
+
+        Digitized Protocol SOA via OpenStudyBuilder (Mahesh)
+
+        EDC Build Automation - Predict required CRFs, build a database build spec. (Conrad)
+
+            Visit Extraction (studyDesignEncounter) / Activity Extraction in USDM format (studyDesignActivities)
+            Map Activities to Forms from CDISC Library API (metadata repository)
+            Build the final study timeline (mainTimeline)
+
+        Generate iDRP / Data Management Plan (Mahesh)
+
+        Synthetic Edit Check Test Dataset Generation (Conrad)
+
+            Extract the forms/fields from a sample edit check description/logic
+                Build a draft dataset with these
+            Retrieve the additional metadata from the EDC regarding all the form and items extracted
+                Extend the draft dataset
+            Build the SQL query to test the check
+                Finalize the testing dataset
 
 
 [15 min break]
