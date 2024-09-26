@@ -1,0 +1,3 @@
+Edit Check Name: Serious Adverse Event Without Seriousness Flag
+Edit Check Description: If the AE is life-threatening, caused death, or resulted in disability, then it must be flagged as serious
+Edit Check Logic: (AE.AESDTH = 'Y' OR AE.AESLIFE = 'Y' OR AE.AESDISAB = 'Y') AND AE.AESER = N
