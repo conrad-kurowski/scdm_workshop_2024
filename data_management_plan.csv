@@ -1,0 +1,30 @@
+Check ID	Data Page / Data Grouping	Data Source	Critical Data Yes/No	Data Review Type	Data Review Role	Data Review Frequency	Applicable Visits	Check Description	Query Text	Review Comments
+
+
+
+
+
+
+
+DRP-00001	DM	EDC	Yes	Manual Review	Data Manager	Weekly	SCR 1	Check for completeness of demographic data	Please complete all required demographic fields.	
+DRP-00002	IE	EDC	Yes	Manual Review	Clinical Monitor	Weekly	SCR 1	Verify inclusion/exclusion criteria are met	Verify inclusion/exclusion criteria and provide missing data.	
+DRP-00003	MH	EDC	Yes	Manual Review	Medical Monitor	Bi-weekly	SCR 1	Review medical history for accuracy and completeness	Ensure all medical history information is accurate and complete.	
+DRP-00004	PE	EDC	Yes	Manual Review	Data Manager	Weekly	SCR 1, Cycle 1 Day 1, EOT	Check height and weight measurements for entry errors	Verify height and weight entries for accuracy.	
+DRP-00005	VS	EDC	Yes	Manual Review	Clinical Monitor	Weekly	SCR 1, Cycle 1 Day 1, EOT	Ensure vital signs are recorded correctly	Check and correct vital signs entries if necessary.	
+DRP-00006	EG	EDC	No	Automatic Check	System	Daily	SCR 1	Ensure 12-lead ECG data is uploaded	Please ensure 12-lead ECG data is uploaded.	
+DRP-00007	OE	EDC	No	Manual Review	Clinical Monitor	Monthly	SCR 1, Cycle 1 Day 1, EOT	Review ophthalmologic assessment data for completeness	Ensure all ophthalmologic assessments are complete.	
+DRP-00008	AE	EDC	Yes	Manual Review	Medical Monitor	Weekly	All Visits	Check for completeness of adverse event reporting	Ensure all adverse events are reported and documented.	
+DRP-00009	CM	EDC	Yes	Manual Review	Data Manager	Weekly	SCR 1, Cycle 1 Day 1, EOT	Review concomitant medications for completeness and accuracy	Verify and complete concomitant medication entries.	
+DRP-00010	LB	EDC	Yes	Manual Review	Clinical Monitor	Weekly	SCR 1, Cycle 1 Day 1, EOT	Check laboratory test results for critical values	Review laboratory test results and flag critical values.	
+DRP-00011	PC	EDC	No	Automatic Check	System	Daily	SCR 1, Cycle 1 Day 1, EOT	Ensure blood for PK data is captured	Please ensure blood for PK data is captured.	
+DRP-00012	TR	EDC	Yes	Manual Review	Medical Monitor	Bi-weekly	SCR 1, Cycle 1 Day 1, EOT	Review radiographic tumor assessment data for accuracy	Ensure radiographic tumor assessment data is accurate.	
+DRP-00013	SC	EDC	No	Manual Review	Data Manager	Monthly	SCR 1, Cycle 1 Day 1, EOT	Check EQ-5D-5L EORTC QLQ-C30 for completeness	Verify and complete EQ-5D-5L EORTC QLQ-C30 entries.	
+DRP-00014	EX	EDC	Yes	Manual Review	Clinical Monitor	Weekly	All Visits	Ensure trial intervention data is recorded accurately	Verify the accuracy of trial intervention data entries.
+
+
+
+
+
+
+
+
